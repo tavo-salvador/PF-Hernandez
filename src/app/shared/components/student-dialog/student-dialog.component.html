@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>Agregar Alumno</h1>
+<div mat-dialog-content >
+  <p>ingrese la siguiente información</p>
+  
+  <form [formGroup]="studentForm">
+            <mat-form-field appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input [formControl]="firtNameControl" matInput placeholder="nombre">
+                <mat-icon matSuffix>badge</mat-icon>
+                <mat-hint>Hint</mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>Apellido</mat-label>
+                <input [formControl]="lastNameControl" matInput placeholder="Apellido">
+                <mat-icon matSuffix>badge</mat-icon>
+                <mat-hint>Hint</mat-hint>
+            </mat-form-field>
+  </form>
+  
+</div>
+<div mat-dialog-actions class="center-content">
+  <button mat-button >Cancelar</button>
+  <button mat-button  cdkFocusInitial>Ok</button>
+</div>
