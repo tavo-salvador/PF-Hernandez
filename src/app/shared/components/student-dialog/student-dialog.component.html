@@ -5,7 +5,7 @@
   <form [formGroup]="studentForm">
             <mat-form-field appearance="outline">
                 <mat-label>Nombre</mat-label>
-                <input [formControl]="firtNameControl" matInput placeholder="nombre">
+                <input [formControl]="firstNameControl" matInput placeholder="Nombre">
                 <mat-icon matSuffix>badge</mat-icon>
                 <mat-hint>Hint</mat-hint>
             </mat-form-field>
@@ -17,9 +17,8 @@
                 <mat-hint>Hint</mat-hint>
             </mat-form-field>
   </form>
-  
 </div>
 <div mat-dialog-actions class="center-content">
-  <button mat-button >Cancelar</button>
-  <button mat-button  cdkFocusInitial>Ok</button>
+  <button mat-button (click)="close()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="studentForm.value" cdkFocusInitial>Guardar</button>
 </div>

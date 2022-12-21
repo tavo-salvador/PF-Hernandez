@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { DialogRef } from '@angular/cdk/dialog';
+import { Component, Inject, inject } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Student } from 'src/app/models/student.model';
 
 @Component({
   selector: 'app-student-dialog',
@@ -8,13 +11,23 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class StudentDialogComponent {
 
-  firtNameControl = new FormControl('');
-  lastNameControl = new FormControl('');
+  firstNameControl = new FormControl('', Validators.required);
+  lastNameControl = new FormControl('', Validators.required);
 
   studentForm = new FormGroup({
-    firtName : this.firtNameControl,
+    firstName : this.firstNameControl,
     lastName : this.lastNameControl
   })
 
+  constructor (private readonly dialogRef: DialogRef, @Inject(MAT_DIALOG_DATA) public data: Student | null,){
+    console.log(data);
+    if (data){
+      this.studentForm.patchValue(data);
+    }
+  }
+
+  close(){
+    this.dialogRef.close();
+  }
 
 }
