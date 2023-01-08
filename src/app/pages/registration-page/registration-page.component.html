@@ -1,0 +1,55 @@
+<div class="button-container">
+    <button (click)="addRegistration()" mat-raised-button  class="addButton">
+      Registrar 
+    </button>
+  </div>
+
+    <table mat-table [dataSource]="records" class="mat-elevation-z8 table">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let element">{{element.id}}</td>
+      </ng-container>
+    
+      <ng-container matColumnDef="idStudent">
+        <th mat-header-cell *matHeaderCellDef>Estudiante</th>
+        <td mat-cell *matCellDef="let element">{{element.idStudent}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="idCourse">
+        <th mat-header-cell *matHeaderCellDef>Curso</th>
+        <td mat-cell *matCellDef="let element">{{element.idCourse}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>Fecha</th>
+        <td mat-cell *matCellDef="let element">{{element.date | date: 'short'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="idUser">
+        <th mat-header-cell *matHeaderCellDef>Usuario</th>
+        <td mat-cell *matCellDef="let element">{{element.idUser}}</td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef>Editar</th>
+        <td mat-cell *matCellDef="let element">
+          <button (click)="editRegistration(element)" mat-icon-button color="accent" >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+        <td mat-cell *matCellDef="let element">
+          <button (click)="removeRegistration(element)" mat-icon-button color="warn" >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>

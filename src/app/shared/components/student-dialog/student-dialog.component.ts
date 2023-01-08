@@ -13,10 +13,14 @@ export class StudentDialogComponent {
 
   firstNameControl = new FormControl('', Validators.required);
   lastNameControl = new FormControl('', Validators.required);
+  roleControl = new FormControl('', Validators.required);
+  genderControl = new FormControl('', Validators.required);
 
   studentForm = new FormGroup({
     firstName : this.firstNameControl,
-    lastName : this.lastNameControl
+    lastName : this.lastNameControl,
+    role : this.roleControl,
+    gender : this.genderControl
   })
 
   constructor (private readonly dialogRef: DialogRef, @Inject(MAT_DIALOG_DATA) public data: Student | null,){

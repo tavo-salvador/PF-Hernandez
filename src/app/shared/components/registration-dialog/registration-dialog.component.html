@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>Registrar</h1>
+<div mat-dialog-content >
+  <p>ingrese la siguiente información</p>
+  
+  <form [formGroup]="registrationForm">
+            <mat-form-field appearance="outline">
+                <mat-label>Alumno</mat-label>
+                <input [formControl]="idStudentControl" matInput placeholder="id Estudiante">
+                <mat-icon matSuffix>person_add</mat-icon>
+                <mat-hint>Hint</mat-hint>
+            </mat-form-field>
+            <br>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Curso</mat-label>
+                <input [formControl]="idCourseControl" matInput placeholder="id Curso">
+                <mat-icon matSuffix>add_circle</mat-icon>
+                <mat-hint>Hint</mat-hint>
+            </mat-form-field>
+            <br>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Fecha</mat-label>
+              <input [formControl]="dateControl" matInput placeholder="Fecha">
+              <mat-icon matSuffix>calendar_month</mat-icon>
+              <mat-hint>Hint</mat-hint>
+          </mat-form-field>
+          <br>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Usuario</mat-label>
+            <input [formControl]="idUserControl" matInput placeholder="id Usuario">
+            <mat-icon matSuffix>manage_accounts</mat-icon>
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions class="center-content">
+  <button mat-button (click)="close()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="registrationForm.value" cdkFocusInitial>Guardar</button>
+</div>

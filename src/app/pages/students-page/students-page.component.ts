@@ -12,15 +12,16 @@ import { StudentDialogComponent } from 'src/app/shared/components/student-dialog
 export class StudentsPageComponent {
 
   students: Student[] =[
-    new Student(1, "Juan", "Perez", true),
-    new Student(2, "Miguel", "Hernandez", false),
-    new Student(3, "Pedro", "Fernandez", true),
-    new Student(4, "Daniela", "Olivares", false),
-    new Student(5, "Mariana", "Lizardi", true),
+    new Student(1, "Juan", "Perez","desarrollador","M", true),
+    new Student(2, "Miguel", "Hernandez","desarrollador","M", false),
+    new Student(3, "Pedro", "Fernandez","it","M", true),
+    new Student(4, "Daniela", "Olivares","it","F", false),
+    new Student(5, "Mariana", "Lizardi","normal","F", true),
+    new Student(6, "Gabriela", "Alvarez","normal","F", true),
 
   ];
 
-  displayedColumns =['id','firstName','lastName','status','edit','delete']
+  displayedColumns =['id','firstName','lastName','role','gender','status','edit','delete']
   
   constructor(public readonly dialogService: MatDialog ) { }
 
@@ -34,7 +35,7 @@ export class StudentsPageComponent {
 
           const lastId = this.students[this.students.length -1]?.id;
 
-          this.students = [...this.students,new Student(lastId + 1, value.firstName, value.lastName, true) ];
+          this.students = [...this.students,new Student(lastId + 1, value.firstName, value.lastName,value.role,value.gender, true) ];
         }
      })
   }
