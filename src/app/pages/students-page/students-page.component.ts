@@ -1,6 +1,7 @@
 
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 import { Student } from 'src/app/models/student.model';
 import { StudentsService } from 'src/app/services/students-service/students.service';
 import { StudentDialogComponent } from 'src/app/shared/components/student-dialog/student-dialog.component';
@@ -12,21 +13,12 @@ import { StudentDialogComponent } from 'src/app/shared/components/student-dialog
 })
 export class StudentsPageComponent {
 
-  /* students: Student[] =[
-    new Student(1, "Juan", "Perez","desarrollador","M", true),
-    new Student(2, "Miguel", "Hernandez","desarrollador","M", false),
-    new Student(3, "Pedro", "Fernandez","it","M", true),
-    new Student(4, "Daniela", "Olivares","it","F", false),
-    new Student(5, "Mariana", "Lizardi","normal","F", true),
-    new Student(6, "Gabriela", "Alvarez","normal","F", true),
-
-  ]; */
-
-  students = StudentsService.getStudents().subscribe();
-
   displayedColumns =['id','firstName','lastName','role','gender','status','edit','delete']
+  students$: Observable<Student[]>;
   
-  constructor(public readonly dialogService: MatDialog ) { }
+  constructor(public readonly dialogService: MatDialog, private studentService: StudentsService ) {
+    this.students$ = studentService.getStudents();
+  }
 
   addStudent(){
     const dialog = this.dialogService.open(StudentDialogComponent)
@@ -36,9 +28,9 @@ export class StudentsPageComponent {
 
           console.log(value);
 
-          const lastId = this.students[this.students.length -1]?.id;
+          const lastId = this.students$[this.students$.length -1]?.id;
 
-          this.students = [...this.students,new Student(lastId + 1, value.firstName, value.lastName,value.role,value.gender, true) ];
+          this.students$ = [...this.students,new Student(lastId + 1, value.firstName, value.lastName,value.role,value.gender, true) ];
         }
      })
   }
