@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Student } from 'src/app/models/student.model';
+import { StudentsService } from 'src/app/services/students-service/students.service';
 import { StudentDialogComponent } from 'src/app/shared/components/student-dialog/student-dialog.component';
 
 @Component({
@@ -11,7 +12,7 @@ import { StudentDialogComponent } from 'src/app/shared/components/student-dialog
 })
 export class StudentsPageComponent {
 
-  students: Student[] =[
+  /* students: Student[] =[
     new Student(1, "Juan", "Perez","desarrollador","M", true),
     new Student(2, "Miguel", "Hernandez","desarrollador","M", false),
     new Student(3, "Pedro", "Fernandez","it","M", true),
@@ -19,7 +20,9 @@ export class StudentsPageComponent {
     new Student(5, "Mariana", "Lizardi","normal","F", true),
     new Student(6, "Gabriela", "Alvarez","normal","F", true),
 
-  ];
+  ]; */
+
+  students = StudentsService.getStudents().subscribe();
 
   displayedColumns =['id','firstName','lastName','role','gender','status','edit','delete']
   
