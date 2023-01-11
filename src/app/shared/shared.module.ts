@@ -13,12 +13,11 @@ import { UserDialogComponent } from './components/user-dialog/user-dialog.compon
 
 @NgModule({
   declarations: [
-    NavToolbarComponent,
-    PageWrapperComponent,
     CourseDialogComponent,
     StudentDialogComponent,
     RegistrationDialogComponent,
-    UserDialogComponent
+    UserDialogComponent,
+
   ],
   imports: [
     CommonModule,    
@@ -26,8 +25,6 @@ import { UserDialogComponent } from './components/user-dialog/user-dialog.compon
     PagesModule
   ],
   exports:[
-    NavToolbarComponent,
-    PageWrapperComponent,
     ReactiveFormsModule,
   ]
 })

@@ -5,14 +5,13 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Lista de alumnos</a>
-      <a mat-list-item href="#">Lista de Cursos</a>
-      <a mat-list-item href="#">Lista de inscripciones</a>
-      <a mat-list-item href="#">Lista de Usuarios</a>
+      <a mat-list-item href="/estudiantes">Lista de alumnos</a>
+      <a mat-list-item href="/cursos">Lista de Cursos</a>
+      <a mat-list-item href="/incripciones">Lista de inscripciones</a>
+      <a mat-list-item href="/usuarios">Lista de Usuarios</a>
 
       <a mat-list-item >
         <mat-icon aria-label="Side nav toggle icon">power_settings_new</mat-icon>
-        <!-- <span class="material-icons">power_settings_new</span> -->
         <span class="elemento-menu">Cerrar sesión</span>
       </a>
 
