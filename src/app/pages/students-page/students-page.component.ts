@@ -14,11 +14,14 @@ import { StudentDialogComponent } from 'src/app/shared/components/student-dialog
 export class StudentsPageComponent {
 
   displayedColumns =['id','firstName','lastName','role','gender','status','edit','delete']
+
   students$: Observable<Student[]>;
+  students: Student[] = [];
   
   constructor(public readonly dialogService: MatDialog, private studentService: StudentsService ) {
-    this.students$ = studentService.getStudents();
+    this.students$ = studentService.students$;
   }
+
 
   addStudent(){
     const dialog = this.dialogService.open(StudentDialogComponent)
@@ -28,9 +31,9 @@ export class StudentsPageComponent {
 
           console.log(value);
 
-          const lastId = this.students$[this.students$.length -1]?.id;
+          const lastId = this.students[this.students.length -1]?.id;
 
-          this.students$ = [...this.students,new Student(lastId + 1, value.firstName, value.lastName,value.role,value.gender, true) ];
+          this.students = [...this.students,new Student(lastId + 1, value.firstName, value.lastName,value.role,value.gender, true) ];
         }
      })
   }
@@ -47,7 +50,7 @@ export class StudentsPageComponent {
     dialog.afterClosed().subscribe((data)=>{
       if (data){
         this.students = this.students.map((stu)=> stu.id === student.id ? {...stu, ...data} : stu);
-        console.log(this.students);
+        //console.log(this.students);
       }
     })
   }

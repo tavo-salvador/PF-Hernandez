@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject, of, Observable } from 'rxjs';
+import { Subject, of, Observable, ReplaySubject } from 'rxjs';
 import { Student } from 'src/app/models/student.model';
 
 @Injectable({
@@ -7,22 +7,31 @@ import { Student } from 'src/app/models/student.model';
 })
 export class StudentsService {
 
+public students$ : Observable<Student[] >;
+public students = new ReplaySubject<Student[]>(1);
 
-
-constructor() { }
-
-getStudents(){
-  return of ([
-    new Student(1, "Juan", "Perez","desarrollador","M", true),
-    new Student(2, "Miguel", "Hernandez","desarrollador","M", false),
-    new Student(3, "Pedro", "Fernandez","it","M", true),
-    new Student(4, "Daniela", "Olivares","it","F", false),
-    new Student(5, "Mariana", "Lizardi","normal","F", true),
-    new Student(6, "Gabriela", "Alvarez","normal","F", true),
-  
-  ]);
+constructor() { 
+  this.students$ = this.students.asObservable();
+  this.students.next([
+      {id:1, firstName: "Juan", lastName: "Perez", role:"desarrollador", gender:"M", status: true},
+      {id:2, firstName: "Miguel", lastName: "Hernandez", role:"desarrollador", gender:"M",status: false},
+      {id:3, firstName: "Pedro", lastName: "Fernandez", role:"it",gender:"M", status:true},
+      {id:4, firstName: "Daniela", lastName: "Olivares", role:"it",gender:"F", status:false},
+      {id:5, firstName: "Mariana", lastName: "Lizardi", role:"normal",gender:"F",status: true},
+      {id:6, firstName: "Gabriela", lastName:"Alvarez", role:"normal",gender:"F",status: true}
+    ]
+  )
 }
 
-
+getStudents(): Observable<Student[]>{
+  return of ([
+    {id:1, firstName: "Juan", lastName: "Perez", role:"desarrollador", gender:"M", status: true},
+    {id:2, firstName: "Miguel", lastName: "Hernandez", role:"desarrollador", gender:"M",status: false},
+    {id:3, firstName: "Pedro", lastName: "Fernandez", role:"it",gender:"M", status:true},
+    {id:4, firstName: "Daniela", lastName: "Olivares", role:"it",gender:"F", status:false},
+    {id:5, firstName: "Mariana", lastName: "Lizardi", role:"normal",gender:"F",status: true},
+    {id:6, firstName: "Gabriela", lastName:"Alvarez", role:"normal",gender:"F",status: true}
+  ]);
+}
 
 }
