@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject, of, Observable, ReplaySubject } from 'rxjs';
+import { Subject, of, Observable, BehaviorSubject, take , map } from 'rxjs';
 import { Student } from 'src/app/models/student.model';
 
 @Injectable({
@@ -7,31 +7,56 @@ import { Student } from 'src/app/models/student.model';
 })
 export class StudentsService {
 
-public students$ : Observable<Student[] >;
-public students = new ReplaySubject<Student[]>(1);
+  private students = new BehaviorSubject<Student[]>([
+      new Student (1,"Juan", "Perez","desarrollador","M",true),
+      new Student (2,"Miguel", "Hernandez","desarrollador","M",false),
+      new Student (3,"Pedro", "Fernandez","it","M",true),
+      new Student (4,"Daniela", "Olivares","it","F",false),
+      new Student (5,"Mariana", "Lizardi","normal","F",true),
+      new Student (6,"Gabriela","Alvarez","normal","F",true)
+    ])
 
-constructor() { 
-  this.students$ = this.students.asObservable();
-  this.students.next([
-      {id:1, firstName: "Juan", lastName: "Perez", role:"desarrollador", gender:"M", status: true},
-      {id:2, firstName: "Miguel", lastName: "Hernandez", role:"desarrollador", gender:"M",status: false},
-      {id:3, firstName: "Pedro", lastName: "Fernandez", role:"it",gender:"M", status:true},
-      {id:4, firstName: "Daniela", lastName: "Olivares", role:"it",gender:"F", status:false},
-      {id:5, firstName: "Mariana", lastName: "Lizardi", role:"normal",gender:"F",status: true},
-      {id:6, firstName: "Gabriela", lastName:"Alvarez", role:"normal",gender:"F",status: true}
-    ]
-  )
+  public students$: Observable<Student[]>;
+
+  constructor() { 
+    this.students$ = this.students.asObservable();
+  }
+
+  postStudent(StudentData: Omit<Student, 'id' | 'status'>): void{
+
+    this.students.pipe(take(1)).subscribe((students) => {
+      const lastId = students[students.length - 1]?.id || 0;
+      this.students.next([ ...students,new Student(lastId + 1, StudentData.firstName, StudentData.lastName,StudentData.role,StudentData.gender, true)]);
+    });
+  }
+
+  putStudent(id: number, data: Partial<Student>): void {
+    this.students.pipe(take(1)).subscribe((students) => {
+      this.students.next( students.map((stu) => stu.id === id ? new Student(
+              stu.id,
+              data.firstName || stu.firstName,
+              data.lastName || stu.lastName,
+              data.role || stu.role,
+              data.gender || stu.gender,            
+              data.status || stu.status,
+            )
+            //{...stu, ...data}
+            : stu
+        ))
+    })
+  }
+
+  deleteStudent(id: number): void {
+    this.students.pipe(take(1)).subscribe((students) => {
+      this.students.next(students.filter((stu) => stu.id !== id))
+    })
+  }
+
+  getStudentById(id: number): Observable<Student | null> {
+    return this.students$.pipe(take(1),
+      map((students) => students.find((stu) => stu.id === id) || null)
+    )
+  }
+
 }
 
-getStudents(): Observable<Student[]>{
-  return of ([
-    {id:1, firstName: "Juan", lastName: "Perez", role:"desarrollador", gender:"M", status: true},
-    {id:2, firstName: "Miguel", lastName: "Hernandez", role:"desarrollador", gender:"M",status: false},
-    {id:3, firstName: "Pedro", lastName: "Fernandez", role:"it",gender:"M", status:true},
-    {id:4, firstName: "Daniela", lastName: "Olivares", role:"it",gender:"F", status:false},
-    {id:5, firstName: "Mariana", lastName: "Lizardi", role:"normal",gender:"F",status: true},
-    {id:6, firstName: "Gabriela", lastName:"Alvarez", role:"normal",gender:"F",status: true}
-  ]);
-}
-
-}

@@ -11,10 +11,10 @@ import { Student } from 'src/app/models/student.model';
 })
 export class StudentDialogComponent {
 
-  firstNameControl = new FormControl('', Validators.required);
-  lastNameControl = new FormControl('', Validators.required);
-  roleControl = new FormControl('', Validators.required);
-  genderControl = new FormControl('', Validators.required);
+  firstNameControl = new FormControl('', [Validators.required]);
+  lastNameControl = new FormControl('', [Validators.required]);
+  roleControl = new FormControl('', [Validators.required]);
+  genderControl = new FormControl('', [Validators.required]);
 
   studentForm = new FormGroup({
     firstName : this.firstNameControl,

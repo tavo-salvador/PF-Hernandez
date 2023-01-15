@@ -10,11 +10,11 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class UserDialogComponent {
 
-  emailControl = new FormControl('', Validators.required);
-  passwordControl = new FormControl('', Validators.required);
-  userNameControl = new FormControl('', Validators.required);
-  addressControl = new FormControl('', Validators.required);
-  phoneNumberControl = new FormControl('', Validators.required);
+  emailControl = new FormControl('', [Validators.required, Validators.email]);
+  passwordControl = new FormControl('', [Validators.required]);
+  userNameControl = new FormControl('', [Validators.required]);
+  addressControl = new FormControl('', [Validators.required]);
+  phoneNumberControl = new FormControl('', [Validators.required]);
   roleControl = new FormControl('', Validators.required);
 
   userForm = new FormGroup({

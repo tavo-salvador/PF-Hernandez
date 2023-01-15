@@ -6,9 +6,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
-import { PageWrapperComponent } from './shared/layout/page-wrapper/page-wrapper.component';
-import { NavToolbarComponent } from './shared/layout/nav-toolbar/nav-toolbar.component';
 import { ServicesModule } from './services/services.module';
+import { NavToolbarComponent } from './layout/nav-toolbar/nav-toolbar.component';
+import { PageWrapperComponent } from './layout/page-wrapper/page-wrapper.component';
 
 @NgModule({
     declarations: [

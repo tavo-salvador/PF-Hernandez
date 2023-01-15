@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CoursePageComponent } from '../pages/course-page/course-page.component';
-//import { CoursePageComponent } from '../pages/course-page/course-page.component';
-import { RegistrationPageComponent } from '../pages/registration-page/registration-page.component';
-import { StudentsPageComponent } from '../pages/students-page/students-page.component';
-import { UserPageComponent } from '../pages/user-page/user-page.component';
+import { CoursePageComponent } from './course-page/course-page.component';
+import { RegistrationPageComponent } from './registration-page/registration-page.component';
+import { StudentsPageComponent } from './students-page/students-page.component';
+import { UserPageComponent } from './user-page/user-page.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [

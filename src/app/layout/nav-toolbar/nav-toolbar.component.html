@@ -5,10 +5,10 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="/estudiantes">Lista de alumnos</a>
-      <a mat-list-item href="/cursos">Lista de Cursos</a>
-      <a mat-list-item href="/incripciones">Lista de inscripciones</a>
-      <a mat-list-item href="/usuarios">Lista de Usuarios</a>
+      <a mat-list-item routerLink="estudiantes">Estudiantes</a>
+      <a mat-list-item routerLink="cursos">Cursos</a>
+      <a mat-list-item routerLink="incripciones">Inscripciones</a>
+      <a mat-list-item routerLink="usuarios">Usuarios</a>
 
       <a mat-list-item >
         <mat-icon aria-label="Side nav toggle icon">power_settings_new</mat-icon>

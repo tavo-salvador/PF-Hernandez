@@ -5,7 +5,7 @@ import { StudentsPageComponent } from './students-page/students-page.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { MaterialModule } from '../shared/modules/material.module';
-import { PageRoutingModule } from './page.route.mudule';
+import { PageRoutingModule } from './page-routing.mudule';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 
