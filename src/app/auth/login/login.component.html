@@ -1,10 +1,10 @@
-<div class="contenedor-login"  [style.background-image]="'url('+imagenURL+')'">
+<div class="contenedor-login"  [style.background-image]="'url('+')'">
     <div class="container">
       <div class="row arriba"></div>
       <div class="row">
         <div class="col-md-4 offset-md-4 col-8 offset-2">
           <mat-card class="mat-elevation-z8">
-            <form [formGroup]="formulario">
+            <form >
               <mat-card-header>
                 <mat-card-title class="login-header">Inicia sesión</mat-card-title>
               </mat-card-header>
@@ -22,7 +22,7 @@
                   </mat-form-field>
                 </div>
                 <div class="col-md-12 col-boton">
-                  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="formulario.invalid">Iniciar sesión</button>
+                  <!-- <button mat-raised-button color="primary" (click)="login()" [disabled]="formLogin.invalid">Iniciar sesión</button> -->
                 </div>
               </mat-card-content>
             </form>

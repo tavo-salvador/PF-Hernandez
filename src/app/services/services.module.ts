@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CourseService } from './course-service/course.service';
 import { StudentsService } from './students-service/students.service';
 import { UserService } from './user-service/user.service';
+import { RegistrationService } from './registration-service/registration.service';
 
 
 
@@ -17,6 +18,7 @@ import { UserService } from './user-service/user.service';
     CourseService,
     StudentsService,
     UserService,
+    RegistrationService
   ]
 })
 export class ServicesModule { }

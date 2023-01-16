@@ -1,11 +1,11 @@
 <div class="button-container">
-    <button (click)="addRegistration()" mat-raised-button  class="addButton">
+    <button (click)="createRegistration()" mat-raised-button  class="addButton">
       Inscribir 
     </button>
 </div>
   <br>
 
-    <table mat-table [dataSource]="records" class="mat-elevation-z8 table">
+    <table mat-table [dataSource]="(regist$ | async) || []" class="mat-elevation-z8 table">
 
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef>No.</th>
@@ -45,7 +45,7 @@
       <ng-container matColumnDef="delete">
         <th mat-header-cell *matHeaderCellDef>Eliminar</th>
         <td mat-cell *matCellDef="let element">
-          <button (click)="removeRegistration(element)" mat-icon-button color="warn" >
+          <button (click)="deleteRegistration(element)" mat-icon-button color="warn" >
             <mat-icon>delete</mat-icon>
           </button>
         </td>

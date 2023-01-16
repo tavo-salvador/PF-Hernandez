@@ -26,6 +26,9 @@ export class UserDialogComponent {
     role : this.roleControl
   })
 
+  hide = true;
+  control: any;
+
   constructor (private readonly dialogRef: DialogRef, @Inject(MAT_DIALOG_DATA) public data: any,){
     console.log(data);
     if (data){
@@ -36,4 +39,15 @@ export class UserDialogComponent {
   close(){
     this.dialogRef.close();
   }
+
+  getErrorEmail() {
+    if (this.emailControl.hasError('required')) {
+      return 'Debes ingresar un valor';
+    }
+
+    return this.emailControl.hasError('email') ? 'No es un correo electrónico válido' : '';
+  }
+
+
+
 }
