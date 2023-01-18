@@ -27,7 +27,12 @@ const routes: Routes = [
   {
     path: 'users',
     component: UserPageComponent,
-  }
+  },
+  {
+    path: 'welcome',
+    component: WelcomeComponent,
+  },
+
 
 ];
 
