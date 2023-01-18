@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, tap } from 'rxjs';
-import { User } from 'src/app/models/user.model';
+import { map, Observable, of, tap } from 'rxjs';
 import { SessionService } from '../session-service/session.service';
 
 @Injectable({
@@ -16,6 +15,15 @@ export class AuthService  {
     private readonly httpClient: HttpClient,
     private readonly sessionService: SessionService
   ) {}
+
+  login(data: { email: string; password: string }): Observable<boolean> {
+
+    if(data.email == 'demo@angular.com' && data.password == 'demo123' ){
+        return of(true);
+    }
+
+    return of(false);
+  } 
 
   /* login(data: { email: string; password: string }): Observable<User> {
     return this.httpClient

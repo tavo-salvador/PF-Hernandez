@@ -5,8 +5,10 @@ import { StudentsPageComponent } from './students-page/students-page.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { MaterialModule } from '../shared/modules/material.module';
-import { PageRoutingModule } from './page-routing.mudule';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { PagesRoutingModule } from './pages-routing.module';
+import { SharedModule } from '../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -20,8 +22,10 @@ import { WelcomeComponent } from './welcome/welcome.component';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     MaterialModule,
-    PageRoutingModule,
+    SharedModule,
+    PagesRoutingModule
   ],
   exports:[
     CoursePageComponent,

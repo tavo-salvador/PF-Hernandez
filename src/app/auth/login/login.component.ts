@@ -12,7 +12,8 @@ import { SessionService } from '../services/session-service/session.service';
 })
 export class LoginComponent implements OnDestroy{
 
-  public loading = false
+  public loading = false;
+
   public formLogin = new FormGroup({
     email: new FormControl('demo@angular.com', [Validators.required, Validators.email]),
     password: new FormControl('demo123', [Validators.required]),
@@ -33,12 +34,12 @@ export class LoginComponent implements OnDestroy{
     this.destroyed$.next(true)
   }
 
-  /* login() {
-    this.loading = true
+  login() {
+    /* this.loading = true
     this.authService.login({
       email: this.formLogin.get('email')?.value || '',
       password: this.formLogin.get('password')?.value || ''
-    }).subscribe(() => this.loading = false)
+    }).subscribe(() => this.loading = false) */
   }
- */
+
 }

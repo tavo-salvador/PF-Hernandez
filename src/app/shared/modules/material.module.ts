@@ -21,7 +21,22 @@ import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    MatSelectModule
+
   ],
   exports:[
     LayoutModule,

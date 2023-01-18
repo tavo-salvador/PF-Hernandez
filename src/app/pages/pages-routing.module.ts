@@ -7,17 +7,32 @@ import { UserPageComponent } from './user-page/user-page.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [
-  {path:'', component: WelcomeComponent},
-  {path:'estudiantes',component: StudentsPageComponent},
-  {path:'cursos', component: CoursePageComponent},
-  {path:'incripciones', component: RegistrationPageComponent},
-  {path:'usuarios', component: UserPageComponent},
-  {path:'**', component: WelcomeComponent }
+
+  {
+    path: '',
+    component: WelcomeComponent,
+  },
+  {
+    path: 'students',
+    component: StudentsPageComponent,
+  },
+  {
+    path: 'courses',
+    component: CoursePageComponent,
+  },
+  {
+    path: 'inscriptions',
+    component: RegistrationPageComponent,
+  },
+  {
+    path: 'users',
+    component: UserPageComponent,
+  }
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PageRoutingModule { }
+export class PagesRoutingModule { }
