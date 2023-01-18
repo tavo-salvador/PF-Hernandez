@@ -13,6 +13,7 @@ import { SessionService } from '../services/session-service/session.service';
 export class LoginComponent implements OnDestroy{
 
   public loading = false;
+  hide = true;
 
   public formLogin = new FormGroup({
     email: new FormControl('demo@angular.com', [Validators.required, Validators.email]),
@@ -40,6 +41,11 @@ export class LoginComponent implements OnDestroy{
       email: this.formLogin.get('email')?.value || '',
       password: this.formLogin.get('password')?.value || ''
     }).subscribe(() => this.loading = false) */
+    if (this.formLogin.invalid) {
+      alert('Lo valores ingresados son incorrectos');
+      return;
+    }
+    this.router.navigateByUrl('/dashboard');
   }
 
 }

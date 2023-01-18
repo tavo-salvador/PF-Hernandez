@@ -11,6 +11,7 @@ import { NavToolbarComponent } from './layout/nav-toolbar/nav-toolbar.component'
 import { PageWrapperComponent } from './layout/page-wrapper/page-wrapper.component';
 import { AuthService } from './auth/services/auth-service/auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardModule } from './layout/dashboard.module';
 
 
 /* function appInit(auth: AuthService){
@@ -30,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
         AppRoutingModule,
         HttpClientModule,
         BrowserAnimationsModule,
+        DashboardModule
         
     ],
     providers: [

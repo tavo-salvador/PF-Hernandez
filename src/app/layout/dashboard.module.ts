@@ -5,6 +5,7 @@ import { PageWrapperComponent } from './page-wrapper/page-wrapper.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import { MaterialModule } from '../shared/modules/material.module';
 
 
 
@@ -17,7 +18,8 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    MaterialModule
 
   ],
   exports:[
