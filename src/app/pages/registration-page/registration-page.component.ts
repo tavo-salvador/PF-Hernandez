@@ -16,6 +16,7 @@ export class RegistrationPageComponent {
   displayedColumns =['id','idStudent','idCourse','date','idUser','edit','delete']
 
   regist$: Observable<Registration[]>;
+  registrationForm: any;
   
   constructor(public readonly dialogService: MatDialog, private RegistrationService: RegistrationService ) { 
     this.regist$ = this.RegistrationService.regist$;
