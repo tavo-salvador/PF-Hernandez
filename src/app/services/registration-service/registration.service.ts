@@ -2,6 +2,14 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, take } from 'rxjs';
 import { Registration } from 'src/app/models/registration.model';
 
+
+export interface IRegistrationService {
+  regist$: Observable<Registration[]>;
+  loadProducts(): void;
+  getRegist(data: Pick<Registration, 'id' >): void;
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
