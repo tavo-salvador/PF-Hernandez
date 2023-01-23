@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { Registration } from 'src/app/models/registration.model';
@@ -10,7 +10,7 @@ import { RegistrationDialogComponent } from 'src/app/shared/components/registrat
   templateUrl: './registration-page.component.html',
   styleUrls: ['./registration-page.component.scss']
 })
-export class RegistrationPageComponent {
+export class RegistrationPageComponent implements OnInit{
 
 
   displayedColumns =['id','idStudent','idCourse','date','idUser','edit','delete']
@@ -20,6 +20,9 @@ export class RegistrationPageComponent {
   
   constructor(public readonly dialogService: MatDialog, private RegistrationService: RegistrationService ) { 
     this.regist$ = this.RegistrationService.regist$;
+  }
+  ngOnInit(): void {
+    this.RegistrationService.loadRegist();
   }
 
   createRegistration(){

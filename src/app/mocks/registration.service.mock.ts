@@ -1,3 +1,5 @@
+import { Injectable } from '@angular/core';
+import { MatDialog } from "@angular/material/dialog";
 import { BehaviorSubject, Observable, of, take } from "rxjs";
 import { Registration } from "../models/registration.model";
 
@@ -33,9 +35,11 @@ const FAKE_REGISTRATION: Registration[] = [
 
     constructor() {
       this.regist$ = this.regist.asObservable();
-      //this.regist.next(FAKE_REGISTRATION)
     }
 
+    loadRegist() {
+      this.regist.next(FAKE_REGISTRATION)
+    } 
       
     postRegist(data: Omit<Registration, "id">): void{
 
@@ -53,9 +57,8 @@ const FAKE_REGISTRATION: Registration[] = [
         });
       }
       deleteRegist(id: number): void {}
+
       putRegist(id: number, data: Partial<Registration>): void {}
   
-     loadProducts() {
-      this.regist.next(FAKE_REGISTRATION)
-    } 
+    
   }

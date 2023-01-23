@@ -1,13 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RegistrationService } from 'src/app/services/registration-service/registration.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RegistrationPageComponent } from './registration-page.component';
-import { RegistrationServiceMock } from 'src/app/mocks/registration.service.mock';
+import { RegistrationService } from '../../services/registration-service/registration.service';
+import { RegistrationServiceMock } from '../../mocks/registration.service.mock';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 fdescribe('RegistrationPageComponent', () => {
   let component: RegistrationPageComponent;
   let fixture: ComponentFixture<RegistrationPageComponent>;
   let registService: RegistrationService;
+  let spyLoadRegist: jasmine.Spy;
   let spyPostRegist: jasmine.Spy;
 
   beforeEach(async () => {
@@ -27,6 +29,7 @@ fdescribe('RegistrationPageComponent', () => {
     fixture = TestBed.createComponent(RegistrationPageComponent);
     component = fixture.componentInstance;
     registService = TestBed.inject(RegistrationService)
+    spyLoadRegist = spyOn(registService, 'loadRegist').and.callThrough();
     spyPostRegist = spyOn(registService, 'postRegist').and.callThrough();
     fixture.detectChanges();
   });
@@ -35,13 +38,15 @@ fdescribe('RegistrationPageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Debe agregar un registro', () => {
-    component.registrationForm.patchValue({
-      name: 'Nombre de prueba',
-      description: 'Prueba descripcion',
-    });
-    component.createRegistration();
-    expect(spyPostRegist).toHaveBeenCalledWith(component.registrationForm.value);
+  it('Debe cargar los registros al inicio', () => {
+    component.ngOnInit();
+    expect(spyLoadRegist).toHaveBeenCalled()
   })
 
+  it('Debe agregar un nuevo registro', () => {
+    component.createRegistration();
+    expect(spyPostRegist).toHaveBeenCalled()
+  })
+
+  
 });

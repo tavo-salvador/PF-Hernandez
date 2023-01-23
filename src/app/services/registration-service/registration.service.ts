@@ -3,13 +3,6 @@ import { BehaviorSubject, map, Observable, take } from 'rxjs';
 import { Registration } from 'src/app/models/registration.model';
 
 
-export interface IRegistrationService {
-  regist$: Observable<Registration[]>;
-  loadProducts(): void;
-  getRegist(data: Pick<Registration, 'id' >): void;
-}
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +10,7 @@ export class RegistrationService {
 
 
 
-  private registration = new BehaviorSubject<Registration[]> ([
+  data : Registration[] = ([
     new Registration(1, 1, 1, new Date(), 1),
     new Registration(2, 3, 2, new Date(), 1),
     new Registration(3, 2, 4, new Date(), 2),
@@ -26,12 +19,17 @@ export class RegistrationService {
     new Registration(6, 5, 5, new Date(), 2),
 
   ]);
-  
+
+  private registration = new BehaviorSubject<Registration[]>([]);
   public regist$: Observable<Registration[]>;
 
   constructor() {
     this.regist$ = this.registration.asObservable();
    }
+
+  loadRegist() {
+    this.registration.next(this.data);
+  } 
 
   postRegist(RegistData: Omit<Registration, 'id' >): void{
 
