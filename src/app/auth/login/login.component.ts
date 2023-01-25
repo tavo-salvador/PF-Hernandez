@@ -23,11 +23,7 @@ export class LoginComponent implements OnDestroy{
   constructor(
     private readonly authService: AuthService,
     private readonly router: Router,
-  ) {
-    /* this.sessionService.user$.pipe(takeUntil(this.destroyed$)).subscribe((user) => {
-      if (user) this.router.navigate(['dashboard', 'students'])
-    }); */
-  }
+  ) {  }
 
   ngOnDestroy(): void {
     this.destroyed$.next(true)
