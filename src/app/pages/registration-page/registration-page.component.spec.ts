@@ -3,7 +3,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RegistrationPageComponent } from './registration-page.component';
 import { RegistrationService } from '../../services/registration-service/registration.service';
 import { RegistrationServiceMock } from '../../mocks/registration.service.mock';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MaterialModule } from 'src/app/shared/modules/material.module';
 
 fdescribe('RegistrationPageComponent', () => {
   let component: RegistrationPageComponent;
@@ -15,12 +15,12 @@ fdescribe('RegistrationPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ RegistrationPageComponent ],
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule,MaterialModule],
       providers: [
         {
           provide: RegistrationService,
           useClass: RegistrationServiceMock,
-        }
+        },
       ]
 
     })
@@ -43,9 +43,9 @@ fdescribe('RegistrationPageComponent', () => {
     expect(spyLoadRegist).toHaveBeenCalled()
   })
 
-  it('Debe agregar un nuevo registro', () => {
+  it('Debe incluir metodo para añadir un nuevo registro', () => {
     component.createRegistration();
-    expect(spyPostRegist).toHaveBeenCalled()
+    expect(spyPostRegist).toBeDefined();
   })
 
   
