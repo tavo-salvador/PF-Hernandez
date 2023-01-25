@@ -1,49 +1,49 @@
+import { JsonPipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, of, tap } from 'rxjs';
-import { SessionService } from '../session-service/session.service';
+import { Router } from '@angular/router';
+import { catchError, map, Observable, of, tap } from 'rxjs';
+
+export interface LoginSuccessful {
+  token: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService  {
 
-  apiUrl = 'https://63c475128067b6bef6d973dc.mockapi.io/';
+  apiUrl = 'https://reqres.in';
 
 
-  constructor(
-    private readonly httpClient: HttpClient,
-    private readonly sessionService: SessionService
-  ) {}
+  constructor( private readonly httpClient: HttpClient, private readonly router: Router, ) {}
 
-  login(data: { email: string; password: string }): Observable<boolean> {
+  login(data: { email: string; password: string }): Observable<any> {
 
-    if(data.email == 'demo@angular.com' && data.password == 'demo123' ){
-        return of(true);
-    }
-
-    return of(false);
-  } 
-
-  /* login(data: { email: string; password: string }): Observable<User> {
-    return this.httpClient
-      .post<LoginSuccessful>(`${this.apiUrl}/users`, data)
+    const resp = this.httpClient
+      .post<LoginSuccessful>(`${this.apiUrl}/api/login`, data)
       .pipe(
-        tap((data) => localStorage.setItem('token', data.token)),
-        mergeMap(() => this.httpClient.get<SingleUserResponse>(`${this.apiUrl}/users/7`)
-        ),
-        map(({ data }) => new User(
-              data.id,
-              data.email,
-              data.password,
-              data.userName,
-              data.address,
-              data.phoneNumber,
-              data.role,
-              
-            )
-        ),
-        tap((user) => this.sessionService.setUser(user))
+        tap((data) => localStorage.setItem('token', data.token))
       );
-  } */
+    return resp;  
+  }
+
+  logOut() {
+    localStorage.removeItem('token');
+    this.router.navigate(['auth', 'login']);
+  }
+
+  verifyToken(): Observable<boolean> {
+    const lsToken = localStorage.getItem('token');
+
+    return of(lsToken)
+      .pipe(
+        tap((token) => {
+          if (!token) throw new Error('Token invalido')
+        }),
+        map(val => true),
+        catchError(() => of(false))
+      )
+  }
+
 }

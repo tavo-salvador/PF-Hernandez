@@ -35,12 +35,6 @@ import { DashboardModule } from './layout/dashboard.module';
         
     ],
     providers: [
-        /* {
-          provide: APP_INITIALIZER,
-          useFactory: appInit,
-          multi: true,
-          deps:[AuthService]
-        } */
     ],
     bootstrap: [AppComponent]
 })
