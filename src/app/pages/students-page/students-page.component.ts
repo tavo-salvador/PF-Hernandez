@@ -21,6 +21,7 @@ export class StudentsPageComponent implements OnDestroy{
     this.students$ = this.studentService.students$;
   }
   ngOnDestroy(): void {
+    this.studentService.getStudents();
   }
 
   createStudent() {

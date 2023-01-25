@@ -28,6 +28,7 @@ export class StudentsService {
   getStudents()  {
     this.httpClient.get<Student[]>(`${this.baseUrl}/students`)
       .subscribe((apiStudents) => {
+        console.log(apiStudents)
         this.students.next(apiStudents)
       })
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { Course } from 'src/app/models/course.model';
@@ -10,7 +10,7 @@ import { CourseDialogComponent } from 'src/app/shared/components/course-dialog/c
   templateUrl: './course-page.component.html',
   styleUrls: ['./course-page.component.scss']
 })
-export class CoursePageComponent {
+export class CoursePageComponent implements OnInit{
 
 
   displayedColumns =['id','nameCourse','numberHours','numberClasses','nameTeacher','edit','delete']
@@ -19,6 +19,9 @@ export class CoursePageComponent {
   
   constructor(public readonly dialogService: MatDialog, private CourseService: CourseService ) { 
     this.courses$ = this.CourseService.courses$;
+  }
+  ngOnInit(): void {
+    this.CourseService.getCourses();
   }
 
   createCourse(){
