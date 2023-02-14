@@ -15,7 +15,7 @@ export class UsersProfileComponent implements OnInit {
   public displayedColumns = ['id', 'avatar', 'first_name', 'last_name', 'email'];
   public users: UserProfile [] = [];
   public totalUsers: Observable<number>;
-  public perPage = 6;
+  public perPage = 3;
   public perPageOptions = [3, 6, 9, 12];
 
   constructor(private store: Store) {
