@@ -13,8 +13,8 @@ import { AuthService } from './auth/services/auth-service/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardModule } from './layout/dashboard.module';
 import { StoreModule } from '@ngrx/store';
-import { AppStoreModule } from './app-store.module';
 import { EffectsModule } from '@ngrx/effects';
+import { AppStoreModule } from './app-store.module';
 
 
 
@@ -28,8 +28,6 @@ import { EffectsModule } from '@ngrx/effects';
         HttpClientModule,
         BrowserAnimationsModule,
         DashboardModule,
-        AppStoreModule,
-        StoreModule.forRoot({}, {}),
         EffectsModule.forRoot([]),
         
         
