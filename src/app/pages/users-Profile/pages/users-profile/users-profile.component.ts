@@ -16,7 +16,7 @@ export class UsersProfileComponent implements OnInit {
   public users: UserProfile [] = [];
   public totalUsers: Observable<number>;
   public perPage = 6;
-  public perPageOptions = [3, 6, 12, 18];
+  public perPageOptions = [3, 6, 9, 12];
 
   constructor(private store: Store) {
     this.totalUsers = this.store.select(selectTotalUsersNumber);

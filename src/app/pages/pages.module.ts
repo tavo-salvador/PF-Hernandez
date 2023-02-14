@@ -27,7 +27,8 @@ import { UsersModule } from './users-Profile/users.module';
     ReactiveFormsModule,
     MaterialModule,
     SharedModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    UsersModule,
   ],
   exports:[
     CoursePageComponent,

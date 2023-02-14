@@ -34,7 +34,7 @@ const routes: Routes = [
     component: WelcomeComponent,
   },
   {
-    path: 'Userprofile',
+    path: 'userprofile',
     component: UsersProfileComponent,
   },
 
