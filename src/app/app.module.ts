@@ -12,15 +12,11 @@ import { PageWrapperComponent } from './layout/page-wrapper/page-wrapper.compone
 import { AuthService } from './auth/services/auth-service/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardModule } from './layout/dashboard.module';
+import { StoreModule } from '@ngrx/store';
+import { AppStoreModule } from './app-store.module';
+import { EffectsModule } from '@ngrx/effects';
 
 
-/* function appInit(auth: AuthService){
-    return () => {
-      return new Promise((resolve) => {
-        console.log('Injection');
-      });
-    };
-  } */
 
 @NgModule({
     declarations: [
@@ -31,7 +27,11 @@ import { DashboardModule } from './layout/dashboard.module';
         AppRoutingModule,
         HttpClientModule,
         BrowserAnimationsModule,
-        DashboardModule
+        DashboardModule,
+        AppStoreModule,
+        StoreModule.forRoot({}, {}),
+        EffectsModule.forRoot([]),
+        
         
     ],
     providers: [

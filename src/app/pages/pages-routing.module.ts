@@ -4,6 +4,7 @@ import { CoursePageComponent } from './course-page/course-page.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { StudentsPageComponent } from './students-page/students-page.component';
 import { UserPageComponent } from './user-page/user-page.component';
+import { UsersProfileComponent } from './users-Profile/pages/users-profile/users-profile.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'welcome',
     component: WelcomeComponent,
+  },
+  {
+    path: 'Userprofile',
+    component: UsersProfileComponent,
   },
 
 

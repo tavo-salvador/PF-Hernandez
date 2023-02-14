@@ -9,6 +9,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UsersModule } from './users-Profile/users.module';
 
 
 
@@ -18,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     StudentsPageComponent,
     RegistrationPageComponent,
     UserPageComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    
   ],
   imports: [
     CommonModule,
